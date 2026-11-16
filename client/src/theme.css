@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+@import "tailwindcss-safe-area";
+
+@theme {
+  --text-xs: 12px;
+  --text-xs--line-height: 16px;
+  --text-sm: 14px;
+  --text-sm--line-height: 20px;
+  --text-base: 16px;
+  --text-base--line-height: 24px;
+  --text-lg: 18px;
+  --text-lg--line-height: 28px;
+  --text-xl: 20px;
+  --text-xl--line-height: 28px;
+  --text-2xl: 24px;
+  --text-2xl--line-height: 32px;
+  --text-3xl: 30px;
+  --text-3xl--line-height: 36px;
+  --text-4xl: 36px;
+  --text-4xl--line-height: 40px;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+:root {
+  color-scheme: light dark;
+  --bg: #f2efe6;
+  --surface: #faf8f1;
+  --surface2: #eae6d8;
+  --text: #101511;
+  --dim: #5c665c;
+  --border: #d4cfbc;
+  --accent: #177a43;
+  --accent-ink: #0d5c30;
+  --amber: #a8740f;
+  --danger: #b3372a;
+  --radius: 10px;
+  --space-surface: var(--surface);
+  --space-surface-alt: var(--surface2);
+  --space-muted: var(--dim);
+  --space-border: var(--border);
+  --space-accent: var(--accent);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e120f;
+    --surface: #161b17;
+    --surface2: #1d241e;
+    --text: #e9ede4;
+    --dim: #96a294;
+    --border: #2c352c;
+    --accent: #2fbf71;
+    --accent-ink: #2fbf71;
+    --amber: #d9a441;
+    --danger: #e0685a;
+  }
+}
+
+@layer base {
+  button, [role="button"], select, summary, input:not([type="checkbox"], [type="radio"]) {
+    min-height: 2.25rem;
+  }
+}
+
+.mono { font-family: var(--font-mono); }
+
+@keyframes traceIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.trace-step { animation: traceIn 240ms ease both; }
+
+@keyframes blinkDot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.25; }
+}
+.live-dot { animation: blinkDot 1.6s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .trace-step, .live-dot { animation: none; }
+}
